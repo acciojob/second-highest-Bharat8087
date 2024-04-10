@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+    <script>
+        function secondHighest(arr) {
+            if (arr.length <= 1 || new Set(arr).size === 1) {
+                return -Infinity;
+            }
 
-<body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+            // Sort the array in descending order
+            arr.sort((a, b) => b - a);
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
+            // Find the second highest element
+            let secondHighest = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] < secondHighest) {
+                    secondHighest = arr[i];
+                    break;
+                }
+            }
 
-    <script type="text/javascript" src="./script.js">
-</script>
+            return secondHighest;
+        }
 
+        function Main() {
+            var n = prompt("Enter the number of elements");
+            var arr = [];
+            for (var i = 0; i < n; i++) {
+                arr[i] = parseInt(prompt("Enter element " + (i+1))); // Parse input to integer
+            }
+            alert(secondHighest(arr));
+        }
+        Main();
+    </script>
+
+    <script type="text/javascript" src="./script.js"></script>
 </body>
-
 </html>
